@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div th:fragment="playerHand(player, game)">
+        <div class="card ml-2 mr-2 mb-2 mt-2">
+            <div class="card-header text-center" th:hidden="${position == 'bottom'}">
+                <!-- Player Name -->
+                <b><span th:text="${player.getName()}"></span></b>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Player Cards -->
+                    <div class="col-sm-6" th:each="card: ${player.getHand()}">
+                        <div class="card ml-2 poker-card">
+                            <div class="card-body text-center">
+                                <h1 class="card-title card-hearts" th:classappend="${card.styleClass()}">
+                                    <span th:utext="${card}"></span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-title text-center">
+                <p>
+                    <b>Current Hand:</b> <span th:text="${game.identifyPlayerHand(player)}"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div th:fragment="communityCard(card)">
+        <div class="card ml-2 mr-2 poker-card" th:classappend="${card.styleClass()}">
+            <div class="card-body text-center">
+                <h1 class="card-title">
+                    <span th:utext="${card}"></span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Poker Simulator</title>
+    <link th:href="@{/webjars/bootstrap/4.1.2/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link th:href="@{master.css}" rel="stylesheet" media="screen" />
+</head>
+<body class="container mt-4 bg-light">
+
+    <div class="row">
+        <div class="col">
+            <h4>Texas Hold'em Poker Simulator</h4>
+        </div>
+        <div class="col">
+            <div class="text-right mb-2">
+                <a class="btn btn-warning" id="nextAction" href="/nextAction"><span th:text="${game.hasEnded() ? 'New Game' : 'Next Action'}"></span> [Space]</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 box-shadow poker-table">
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- Player 2 -->
+                <div th:insert="fragments :: playerHand(${player2}, ${game})" th:if="${player2 != null}"></div>
+            </div>
+            <div class="col-sm-4">
+                <!-- Player 4 -->
+                <div th:insert="fragments :: playerHand(${player4}, ${game})" th:if="${player4 != null}"></div>
+            </div>
+            <div class="col-sm-4">
+                <!-- Player 3 -->
+                <div th:insert="fragments :: playerHand(${player3}, ${game})" th:if="${player3 != null}"></div>
+            </div>
+        </div>
+
+        <div class="row poker-community-cards">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+                <div th:insert="fragments :: communityCard(${communityCard1})"></div>
+            </div>
+            <div class="col-sm-2">
+                <div th:insert="fragments :: communityCard(${communityCard2})"></div>
+            </div>
+            <div class="col-sm-2">
+                <div th:insert="fragments :: communityCard(${communityCard3})"></div>
+            </div>
+            <div class="col-sm-2">
+                <div th:insert="fragments :: communityCard(${communityCard4})"></div>
+            </div>
+            <div class="col-sm-2">
+                <div th:insert="fragments :: communityCard(${communityCard5})"></div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4">
+                <!-- Player 5 -->
+                <div th:insert="fragments :: playerHand(${player5}, ${game})" th:if="${player5 != null}"></div>
+            </div>
+            <div class="col-sm-4">
+                <!-- Player 1 -->
+                <div th:insert="fragments :: playerHand(${player1}, ${game})" th:if="${player1 != null}"></div>
+            </div>
+            <div class="col-sm-4">
+                 <!-- Player 6 -->
+                <div th:insert="fragments :: playerHand(${player6}, ${game})" th:if="${player6 != null}"></div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    // Bind SpaceBar key to the "Next Action" button.
+	window.onkeydown = function(event){
+		if(event.keyCode === 32) {
+			event.preventDefault();
+			document.querySelector('#nextAction').click();
+		}
+	};
+</script>
+
+</body>
+</html>

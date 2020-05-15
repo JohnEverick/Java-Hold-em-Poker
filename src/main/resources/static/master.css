@@ -1,0 +1,50 @@
+.container {
+	width: 70em;
+}
+
+.box-shadow {
+	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+.poker-table {
+	background: green;
+}
+
+.card-footer h4,
+.card-header h4 {
+	margin-bottom: .2rem;
+}
+
+.poker-card h1 {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-size: 2.0rem;
+}
+
+.card-red {
+	color: red;
+}
+
+.card-black {
+	color: black;
+}
+
+.poker-card {
+	outline: 2px dashed darkgray;
+	outline-offset: -10px;
+	width: 7em;
+}
+
+.poker-card.card-back {
+	background: repeating-linear-gradient(
+			135deg,
+			#606dbc,
+			#606dbc 10px,
+			#465298 10px,
+			#465298 20px
+	);
+}
+
+.poker-community-cards {
+	margin: 1em auto 1em auto;
+}
